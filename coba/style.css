@@ -4,34 +4,52 @@ body {
   margin: 0;
   padding: 20px;
 }
-
 header {
   background: #f8f9fa;
   padding: 10px;
-  text-align: center;
+  text-align: center; /* Teks di dalam header akan berada di tengah */
   border-radius: 80px 10px;
+  margin: 0 auto; /* Memusatkan header */
+  max-width: 1440px; /* Atur lebar maksimum header agar tidak terlalu lebar */
 }
 
-.logo h1 {
-  margin: 0;
+h1 {
+  margin: 0; /* Menghapus margin default pada h1 */
+  font-size: 24px; /* Atur ukuran font jika perlu */
 }
 
 .user-container {
-  display: flex;
-  align-items: center;
-  padding: 10px;
+  display: flex; /* Menggunakan Flexbox */
+  align-items: center; /* Menjaga elemen sejajar secara vertikal */
+  padding: 10px; /* Memberi sedikit padding */
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.user {
+  display: flex; /* Menggunakan Flexbox untuk menata ikon dan info */
+  align-items: center; /* Menjaga sejajar secara vertikal */
 }
 
 .user-icon {
-  border-radius: 10px;
-  width: 50px;
-  height: 50px;
+  width: 50px; /* Atur lebar ikon sesuai keinginan */
+  height: 50px; /* Atur tinggi ikon sesuai keinginan */
+  border-radius: 20%; /* Membuat ikon menjadi lingkaran */
+  margin-right: 10px; /* Memberi jarak antara ikon dan informasi */
 }
 
-.menu-container {
+.user-info {
   display: flex;
-  justify-content: center;
-  padding: 10px;
+  flex-direction: column; /* Menyusun informasi dalam kolom */
+}
+
+strong {
+  font-size: 16px; /* Ukuran font untuk nama */
+}
+
+p {
+  font-size: 14px; /* Ukuran font untuk deskripsi */
+  margin: 0; /* Menghapus margin default */
 }
 
 .background-container {
@@ -43,6 +61,8 @@ header {
   min-height: 10vh;
   margin: 2%;
   border-radius: 10px;
+  margin: 0 auto;
+  max-width: 1440px; /* Atur lebar maksimum header agar tidak terlalu lebar */
 }
 
 .todo-container {
@@ -84,7 +104,7 @@ header {
 }
 
 .add-task:hover {
-  background-color: #34b343;
+  background-color: #08b8b5;
 }
 
 .task-list {
@@ -114,7 +134,7 @@ header {
 }
 
 .task-checkbox:checked {
-  background-color: #3ecf4c; /* Warna latar belakang saat dicentang */
+  background-color: #08b8b5; /* Warna latar belakang saat dicentang */
 }
 
 .task-checkbox:checked::after {
@@ -163,19 +183,6 @@ header {
   border-radius: 5px;
 }
 
-.submit-task-btn {
-  background-color: #3ecf4c;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.submit-task-btn:hover {
-  background-color: #34b945;
-}
-
 .options-btn,
 .task-options-btn {
   background: none;
@@ -222,7 +229,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: #3ecf4c; /* Warna hijau ketika dicentang */
+  background-color: #08b8b5; /* Warna hijau ketika dicentang */
 }
 
 .on-progress-container {
@@ -244,7 +251,7 @@ input[type="checkbox"]:checked {
 }
 
 .move-to-done-btn {
-  background-color: #4caf50;
+  background-color: #08b8b5;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -259,4 +266,114 @@ input[type="checkbox"]:checked {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 4px;
+}
+
+.options-menu {
+  position: absolute; /* Agar menu muncul di atas konten lain */
+  background: white; /* Latar belakang putih */
+  border: 1px solid #ccc; /* Garis border abu-abu */
+  border-radius: 5px; /* Sudut membulat */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+  padding: 10px; /* Ruang di dalam menu */
+  z-index: 10; /* Pastikan menu berada di atas elemen lainnya */
+}
+
+.options-menu button {
+  display: block; /* Membuat setiap tombol di bawah satu sama lain */
+  width: 100%; /* Mengatur lebar tombol 100% */
+  background: none; /* Latar belakang transparan */
+  border: none; /* Menghilangkan border default */
+  padding: 8px; /* Ruang di dalam tombol */
+  text-align: left; /* Teks rata kiri */
+  cursor: pointer; /* Menunjukkan bahwa tombol dapat diklik */
+  transition: background 0.2s; /* Efek transisi saat hover */
+}
+
+.options-menu button:hover {
+  background: #f0f0f0; /* Mengubah latar belakang saat hover */
+}
+
+/* task from start*/
+.task-form {
+  background-color: #f9f9f9; /* Warna latar belakang form */
+  padding: 15px; /* Padding di dalam form */
+  border: 1px solid #ccc; /* Border untuk form */
+  border-radius: 5px; /* Sudut membulat */
+  margin-top: 10px; /* Jarak atas dari elemen lainnya */
+  display: flex; /* Menyusun elemen di dalam form */
+  flex-direction: column; /* Mengatur arah flex menjadi kolom */
+}
+
+.task-form div {
+  margin-bottom: 10px; /* Jarak antar elemen di dalam form */
+}
+
+.task-input,
+.task-date,
+.task-assign {
+  width: 100%; /* Lebar penuh */
+  padding: 8px; /* Padding di dalam input */
+  border: 1px solid #ccc; /* Border untuk input */
+  border-radius: 4px; /* Sudut membulat */
+}
+
+.submit-task-btn {
+  background-color: #08b8b5; /* Warna latar belakang tombol */
+  color: white; /* Warna teks tombol */
+  border: none; /* Menghilangkan border default */
+  border-radius: 4px; /* Sudut membulat */
+  padding: 10px; /* Padding di dalam tombol */
+  cursor: pointer; /* Menunjukkan kursor pointer saat hover */
+  font-size: 16px; /* Ukuran font */
+}
+
+.submit-task-btn:hover {
+  background-color: #08b8b5; /* Warna saat hover */
+}
+
+/* task form start */
+.task-form {
+  margin: 20px auto; /* Jarak di atas dan bawah, auto untuk center */
+  padding: 20px; /* Padding di dalam form */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 8px; /* Sudut melengkung */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+  max-width: 400px; /* Maksimal lebar */
+}
+.task-form div {
+  display: flex;
+  flex-direction: column; /* Mengatur elemen dalam kolom */
+  align-items: center; /* Memusatkan elemen secara horizontal */
+  margin-bottom: 15px; /* Jarak antara elemen */
+}
+
+.task-form input,
+.task-form select {
+  width: 100%; /* Membuat input dan select penuh */
+  max-width: 300px; /* Mengatur lebar maksimum */
+  padding: 10px; /* Ruang di dalam input */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 5px; /* Sudut melengkung */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+.task-form label {
+  margin-bottom: 5px; /* Jarak antara label dan input */
+  font-weight: bold; /* Menebalkan teks label */
+}
+.task-form .submit-task-btn {
+  width: 100%; /* Membuat tombol mengisi lebar penuh */
+  max-width: 300px; /* Mengatur lebar maksimum agar sama dengan input */
+  padding: 10px; /* Ruang di dalam tombol */
+  border: none; /* Menghapus border default */
+  border-radius: 5px; /* Sudut melengkung */
+  background-color: #054e4d; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  font-size: 16px; /* Ukuran font */
+  cursor: pointer; /* Mengubah kursor saat hover */
+  transition: background-color 0.3s; /* Transisi halus saat hover */
+}
+
+.task-form .submit-task-btn:hover {
+  background-color: #08b8b5; /* Warna latar belakang saat hover */
 }
