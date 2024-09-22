@@ -1,0 +1,76 @@
+/* Penyempurnaan Container */
+.background-container {
+  background-color: #3b3b3b;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  max-width: 80%;
+  min-height: 550px;
+  display: flex; /* Untuk membuat container fleksibel */
+  flex-direction: column; /* Elemen diatur secara vertikal */
+}
+
+/* Flexbox dengan Wrap jika diperlukan */
+.todo-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Bucket akan pindah ke baris baru jika diperlukan */
+  gap: 30px;
+}
+
+/* Styling Bucket */
+.bucket {
+  background-color: #444;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bucket h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+/* Tombol Add Task */
+.add-task {
+  background-color: #5c5c5c;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+}
+
+.add-task:hover {
+  background-color: #6c6c6c;
+}
+
+/* Input Teks */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* Tombol Add Bucket */
+.addbucket {
+  background-color: #5c5c5c;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: block;
+  width: 10%;
+}
+
+.addbucket:hover {
+  background-color: #6c6c6c;
+}

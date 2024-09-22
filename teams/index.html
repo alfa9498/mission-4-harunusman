@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mode Switcher</title>
+    <link rel="stylesheet" href="/teams/style.css" />
+  </head>
+  <body>
+    <div class="menu-container">
+      <div class="menu">
+        <a href="#" class="grid-icon" onclick="switchMode('grid')">
+          <img src="/icons/grid.png" alt="Grid Icon" />
+        </a>
+        <a href="#" class="board-icon" onclick="switchMode('board')">
+          <img src="/icons/board.png" alt="Board Icon" />
+        </a>
+        <a href="#" class="calendar-icon" onclick="switchMode('calendar')">
+          <img src="/icons/calender.png" alt="Calendar Icon" />
+        </a>
+        <a href="#" class="chart-icon" onclick="switchMode('chart')">
+          <img src="/icons/chart.png" alt="Chart Icon" />
+        </a>
+      </div>
+      <div id="content" class="content">
+        <!-- Modal untuk menambahkan tugas -->
+        <div id="task-modal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Task</h2>
+            <form id="task-form">
+              <div class="form-row">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required />
+              </div>
+              <div class="form-row">
+                <label for="assignment">Assignment:</label>
+                <textarea id="assignment" name="assignment" required></textarea>
+              </div>
+              <div class="form-row">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date" required />
+              </div>
+              <div class="form-row">
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due-date" required />
+              </div>
+              <div class="form-row">
+                <label for="bucket">Bucket:</label>
+                <select id="bucket" name="bucket" required>
+                  <option value="todo">To Do</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="done">Done</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="progress">Progress:</label>
+                <input
+                  type="number"
+                  id="progress"
+                  name="progress"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </div>
+              <button type="submit">Add Task</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Konten yang akan berubah sesuai mode -->
+        <div id="task-table" class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Assignment</th>
+                <th>Start date</th>
+                <th>Due date</th>
+                <th>Bucket</th>
+                <th>Progress</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="6">
+                  <button class="add-task">+ Add new task</button>
+                </td>
+              </tr>
+              <!-- Rows of tasks will be dynamically added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="/teams/script.js"></script>
+  </body>
+</html>

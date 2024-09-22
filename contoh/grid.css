@@ -1,0 +1,20 @@
+/* Default Style for Board Mode (Assuming this is your board mode style) */
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Grid Mode Style */
+.grid-mode .todo-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Membuat tiga kolom */
+  gap: 10px;
+}
+
+.bucket {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
