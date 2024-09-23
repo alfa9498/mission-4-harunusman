@@ -115,6 +115,15 @@ function showTaskForm(bucketId) {
       </select>
     </div>
     <div>
+      <label for="task-priority">priority : </label>
+      <select id="task-priority" class="task-priority" required>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="Urgent">Urgent</option>
+      </select>
+    </div>
+    <div>
       <button class="submit-task-btn">Add Task</button>
     </div>
   `;
