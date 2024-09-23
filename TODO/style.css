@@ -470,14 +470,13 @@ input[type="checkbox"]:checked {
 
 /* Add this to your style.css file */
 .footer-container {
-  margin-top: 10px;
-  background-color: #0d8f8f;
-  padding: 20px;
+  padding: 15px;
   font-size: 700;
   text-align: center;
   color: #ffffff;
-  border: 1px solid #b9e8ea;
   border-radius: 10px 80px;
+  margin-top: 200px;
+  max-width: 1440px;
 }
 
 .footer-container p {
