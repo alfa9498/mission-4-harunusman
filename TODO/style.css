@@ -467,3 +467,19 @@ input[type="checkbox"]:checked {
   text-decoration: line-through;
   color: grey;
 }
+
+/* Add this to your style.css file */
+.footer-container {
+  margin-top: 10px;
+  background-color: #0d8f8f;
+  padding: 20px;
+  font-size: 700;
+  text-align: center;
+  color: #ffffff;
+  border: 1px solid #b9e8ea;
+  border-radius: 10px 80px;
+}
+
+.footer-container p {
+  margin: 0;
+}
