@@ -13,25 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function createBucket(bucketName) {
   const todoContainer = document.querySelector(".todo-container");
-  const newBucketId = bucketName.toLowerCase().replace(/\s+/g, "-");
-
-  // Periksa jika ID sudah ada
-  if (document.getElementById(newBucketId)) {
-    alert("Bucket dengan nama ini sudah ada.");
-    return;
-  }
-
   const newBucket = document.createElement("div");
   newBucket.classList.add("bucket");
-  newBucket.id = newBucketId;
+  newBucket.id = bucketName.toLowerCase().replace(/\s+/g, "-");
   newBucket.innerHTML = `
-    <h3>${bucketName}</h3>
-    <button class="options-btn" onclick="showBucketOptions(event)">⋮</button>
-    <button class="add-task">+ Add task</button>
-    <button class="delete-all-tasks" onclick="deleteAllTasks('${newBucket.id}')">Delete All Tasks</button>
-    <div class="task-list"></div>
-    <div class="options-menu" style="display: none;"></div>
-  `;
+      <h3>${bucketName}</h3>
+      <button class="options-btn" onclick="showBucketOptions(event)">⋮</button>
+      <button class="add-task">+ Add task</button>
+      <button class="delete-all-tasks" onclick="deleteAllTasks('${newBucket.id}')">Delete All Tasks</button>
+      <div class="task-list"></div>
+      <div class="options-menu" style="display: none;"></div>
+    `;
 
   todoContainer.appendChild(newBucket);
 
@@ -49,9 +41,9 @@ function showBucketOptions(event) {
   optionsMenu.style.display =
     optionsMenu.style.display === "block" ? "none" : "block";
   optionsMenu.innerHTML = `
-    <button onclick="renameBucket('${bucket.id}')">Rename</button>
-    <button onclick="deleteBucket('${bucket.id}')">Delete</button>
-  `;
+      <button onclick="renameBucket('${bucket.id}')">Rename</button>
+      <button onclick="deleteBucket('${bucket.id}')">Delete</button>
+    `;
 }
 
 function renameBucket(bucketId) {
@@ -64,12 +56,14 @@ function renameBucket(bucketId) {
     const oldName = bucket.querySelector("h3").innerText;
     const newId = newName.toLowerCase().replace(/\s+/g, "-");
 
-    // Update name in DOM
+    // Update nama di DOM
     bucket.querySelector("h3").innerText = newName;
 
-    // Update id only if new id is different
+    // Update id hanya jika id baru berbeda
     if (newId !== bucketId) {
       bucket.id = newId;
+
+      // Update nama bucket di localStorage tanpa mengubah nama bucket lainnya
       updateBucketNameInStorage(oldName, newName, bucketId, newId);
     }
   }
@@ -90,25 +84,25 @@ function showTaskForm(bucketId) {
   taskForm.classList.add("task-form");
 
   taskForm.innerHTML = `
-    <div>
-      <input type="text" class="task-input" placeholder="Enter Task Name" required>
-    </div>
-    <div>
-      <label for="task-date">Due Date: </label>
-      <input type="date" id="task-date" class="task-date" required>
-    </div>
-    <div>
-      <label for="task-assign">Assign to: </label>
-      <select id="task-assign" class="task-assign" required>
-        <option value="User 1">User 1</option>
-        <option value="User 2">User 2</option>
-        <option value="User 3">User 3</option>
-      </select>
-    </div>
-    <div>
-      <button class="submit-task-btn">Add Task</button>
-    </div>
-  `;
+      <div>
+        <input type="text" class="task-input" placeholder="Enter Task Name" required>
+      </div>
+      <div>
+        <label for="task-date">Due Date: </label>
+        <input type="date" id="task-date" class="task-date" required>
+      </div>
+      <div>
+        <label for="task-assign">Assign to: </label>
+        <select id="task-assign" class="task-assign" required>
+          <option value="User 1">User 1</option>
+          <option value="User 2">User 2</option>
+          <option value="User 3">User 3</option>
+        </select>
+      </div>
+      <div>
+        <button class="submit-task-btn">Add Task</button>
+      </div>
+    `;
 
   bucket.appendChild(taskForm);
 
@@ -132,16 +126,16 @@ function addTaskToBucket(bucketId, taskName, taskDate, taskAssign) {
   const newTask = document.createElement("div");
   newTask.classList.add("task");
   newTask.innerHTML = `
-    <input type="checkbox" class="task-checkbox">
-    <span>${taskName}</span>
-    <div>Due: ${taskDate}</div>
-    <div>Assigned to: ${taskAssign}</div>
-    <button class="task-options-btn" onclick="showTaskOptions(event)">⋮</button>
-    <div class="task-options-menu" style="display: none;">
-      <button onclick="editTask(event)">Edit</button>
-      <button onclick="deleteTask(event)">Delete</button>
-    </div>
-  `;
+      <input type="checkbox" class="task-checkbox">
+      <span>${taskName}</span>
+      <div>Due: ${taskDate}</div>
+      <div>Assigned to: ${taskAssign}</div>
+      <button class="task-options-btn" onclick="showTaskOptions(event)">⋮</button>
+      <div class="task-options-menu" style="display: none;">
+        <button onclick="editTask(event)">Edit</button>
+        <button onclick="deleteTask(event)">Delete</button>
+      </div>
+    `;
 
   taskList.appendChild(newTask);
   saveTaskToBucket(bucketId, taskName, taskDate, taskAssign);
@@ -163,8 +157,6 @@ function showTaskOptions(event) {
 
 function editTask(event) {
   const task = event.target.closest(".task");
-  const bucket = task.closest(".bucket");
-  const bucketId = bucket.id;
   const taskName = task.querySelector("span").innerText;
   const newTaskName = prompt("Edit Task Name:", taskName);
   if (newTaskName) {
@@ -243,34 +235,25 @@ function loadTasks(bucketId) {
 
 function updateBucketNameInStorage(oldName, newName, oldId, newId) {
   const buckets = JSON.parse(localStorage.getItem("buckets")) || [];
+
+  // Ganti hanya bucket yang memiliki nama lama
   const updatedBuckets = buckets.map((bucket) =>
     bucket === oldName ? newName : bucket
   );
+
+  // Simpan buckets dengan nama baru
   localStorage.setItem("buckets", JSON.stringify(updatedBuckets));
 
-  // Update tasks associated with the bucket
-  const tasks = JSON.parse(localStorage.getItem(oldId)) || [];
-  localStorage.setItem(newId, JSON.stringify(tasks));
-  localStorage.removeItem(oldId); // Hapus old bucket's tasks
+  // Update tasks untuk bucket lama dengan id baru
+  const tasks = localStorage.getItem(oldId);
+  if (tasks) {
+    localStorage.setItem(newId, tasks);
+    localStorage.removeItem(oldId); // Hapus tasks dari id lama
+  }
 }
 
 function removeBucketFromStorage(bucketName) {
   const buckets = JSON.parse(localStorage.getItem("buckets")) || [];
   const updatedBuckets = buckets.filter((bucket) => bucket !== bucketName);
   localStorage.setItem("buckets", JSON.stringify(updatedBuckets));
-}
-function moveToDone(bucketId, taskElement) {
-  const doneBucket = document.getElementById("done");
-  const taskClone = taskElement.cloneNode(true);
-
-  // Tambahkan kelas done-task agar teks tercoret
-  taskClone.querySelector("span").classList.add("done-task");
-
-  // Hapus checkbox dari clone dan tambahkan ke bucket "Done"
-  taskClone.querySelector(".task-checkbox").remove();
-  doneBucket.querySelector(".task-list").appendChild(taskClone);
-
-  // Hapus task dari bucket lama
-  taskElement.remove();
-  removeTaskFromStorage(bucketId, taskElement);
 }

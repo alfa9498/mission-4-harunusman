@@ -4,16 +4,15 @@ body {
   margin: 0;
   padding: 20px;
 }
-
+/* style logo  sampai user  */
 header {
-  background: #f8f9fa;
+  background: #0d8f8f;
   padding: 10px;
   text-align: center;
   border-radius: 80px 10px;
   margin: 0 auto;
   max-width: 1440px;
 }
-
 h1 {
   margin: 0;
   font-size: 24px;
@@ -52,13 +51,15 @@ p {
   font-size: 14px;
   margin: 0;
 }
+/* style logo  sampai user  */
 
+/* style backround content */
 .background-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #454545;
+  background-color: #ec7f54;
   min-height: 10vh;
   margin: 2%;
   border-radius: 10px;
@@ -78,12 +79,12 @@ p {
 
 .bucket {
   position: relative;
-  background-color: #f4f4f4;
+  background-color: #038986;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   flex: 1;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(157, 8, 8, 0.1);
   margin-top: 10px;
   width: 300px;
 }
@@ -95,7 +96,7 @@ p {
 }
 
 .add-task {
-  background-color: #054e4d;
+  background-color: #ff4d4d;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -209,7 +210,7 @@ p {
 
 .delete-all-tasks {
   padding: 10px;
-  background-color: #ff4d4d;
+  background-color: #054e4d;
   color: white;
   border: none;
   border-radius: 5px;
@@ -254,7 +255,7 @@ input[type="checkbox"]:checked {
 }
 
 .move-to-done-btn {
-  background-color: #08b8b5;
+  background-color: #ff4d4d;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -316,12 +317,12 @@ input[type="checkbox"]:checked {
 .task-assign {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #ad1e1e;
   border-radius: 4px;
 }
 
 .submit-task-btn {
-  background-color: #08b8b5;
+  background-color: #ff4d4d;
   color: white;
   border: none;
   border-radius: 4px;
@@ -335,7 +336,7 @@ input[type="checkbox"]:checked {
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .todo-container {
     flex-direction: column; /* Kolom untuk perangkat kecil */
     align-items: center; /* Pusatkan item */
@@ -343,11 +344,11 @@ input[type="checkbox"]:checked {
 
   .bucket {
     width: 100%; /* Lebar penuh untuk bucket */
-    max-width: 90%; /* Maksimal 90% untuk mencegah overflow */
+    max-width: 80%; /* Maksimal 90% untuk mencegah overflow */
   }
 
   .task-form {
-    width: 90%; /* Lebar form */
+    width: 83%; /* Lebar form */
     max-width: 400px; /* Maksimal lebar form */
   }
 
@@ -391,7 +392,7 @@ input[type="checkbox"]:checked {
 }
 
 /* Media Queries untuk Responsivitas */
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .add-bucket-container {
     justify-content: center; /* Pusatkan tombol di layar kecil */
     margin-bottom: 20px; /* Jarak dari elemen di bawah */
@@ -407,14 +408,62 @@ input[type="checkbox"]:checked {
 }
 
 /* Media Query untuk ukuran mobile (di bawah 768px misalnya) */
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   #addBucketBtn {
     position: absolute;
     top: 120px; /* Jarak dari atas */
     left: 50%; /* Posisi horizontal di tengah */
     transform: translateX(-50%); /* Agar benar-benar di tengah */
     z-index: 10; /* Pastikan tombol ada di atas elemen lain */
-    width: 90%; /* Sesuaikan lebar jika diperlukan untuk layar kecil */
+    width: 74%; /* Sesuaikan lebar jika diperlukan untuk layar kecil */
     max-width: 300px; /* Batas maksimal lebar tombol */
   }
+}
+.task-form {
+  background-color: #1fa093;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex; /* Menggunakan flexbox */
+  flex-direction: column; /* Mengatur kolom */
+  align-items: center; /* Mengatur elemen ke tengah */
+}
+
+.task-form div {
+  margin-bottom: 5px;
+  width: 100%; /* Lebar penuh */
+  display: flex; /* Menggunakan flexbox untuk setiap elemen */
+  justify-content: center; /* Menyusun elemen ke tengah */
+  align-items: center; /* Menjaga elemen sejajar secara vertikal */
+}
+
+.task-input,
+.task-date,
+.task-assign {
+  width: 80%; /* Lebar 80% */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.submit-task-btn {
+  background-color: #08b8b5;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%; /* Lebar 80% */
+}
+
+.submit-task-btn:hover {
+  background-color: #ff4d4d;
+}
+.done-task {
+  text-decoration: line-through;
+  color: grey;
 }
